@@ -1,6 +1,7 @@
 import Vuex from "vuex";
 import Vue from 'vue';
 import 'es6-promise/auto';
+import createPersistedState from "vuex-persistedstate";
 
 
 Vue.use(Vuex);
@@ -8,6 +9,7 @@ Vue.use(Vuex);
 
 //Le store sert à centraliser les informations
 const store = new Vuex.Store({
+    plugins: [createPersistedState()],
     state: {
         //La connexion comme elle est de base dans sign-in
         tokens: null,
