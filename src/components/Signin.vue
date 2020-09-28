@@ -29,7 +29,6 @@
 </template>
 
 <script>
-
 export default {
   name: "Signin",
   data() {
@@ -48,10 +47,15 @@ export default {
         this.axios
           .post("http://localhost:3000/signin", this.form)
           .then((res) => {
+            //r-a-z inputs
             this.form.email = "";
             this.form.password = "";
+            //j'envoie ma method addToken au Store
+            this.$store.dispatch("addToken", res.data); //payload
+            //Par le getters je look statut du Token
+            console.log(this.$store.getters.get_token);
+            //redirect
             this.$router.push("/Dashboard");
-            this.$store.dispatch('addToken', res.data) //payload
             console.log(res.data);
           })
           .catch((err) => {

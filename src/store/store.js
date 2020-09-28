@@ -14,22 +14,23 @@ const store = new Vuex.Store({
     },
     mutations: {
         //La mutation sera notre user qui est maintenant connecté, les muta s'écrvient en majuscules
-        add_token: (state, token) =>{
+        ADD_TOKEN: (state, token) =>{
             state.tokens = token;
-            console.log(state.tokens);
         }
     },
    
     getters: {
-
+        //faire un getter qui check si tokens est true en mode fonction
+        get_token: (state)=>{
+            return state.tokens;
+        }
     },
     actions: {
         addToken(context, token){
-            context.commit('add_token', token); //pour l'envoyer à la mutation
+            context.commit('ADD_TOKEN', token); //pour l'envoyer à la mutation
         }
     }
 });
 
-global.store = store;
 
 export default store;
